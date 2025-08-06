@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشروط والأحكام - أكاديمية هوبس</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            color: #333;
+            line-height: 1.6;
+            transition: background 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            background: white;
+            color: var(--secondary);
+            padding: 10px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover i {
+            transform: rotate(15deg);
+        }
+
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: white;
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 30px;
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            background: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .policy-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .policy-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .policy-title {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-title i {
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .policy-section:hover .policy-title i {
+            transform: rotate(10deg);
+        }
+
+        ul {
+            padding-right: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-right: 25px;
+        }
+
+        li:before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+            font-size: 1.4rem;
+            top: -5px;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            color: #27ae60;
+            font-size: 1.1rem;
+            top: 0;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(52, 152, 219, 0.15) 0%, rgba(52, 152, 219, 0.05) 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            transform: scale(1.01);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .highlight-title {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        footer:before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="%232c3e50" fill-opacity="1" d="M0,70L48,60C96,50,192,30,288,30C384,30,480,50,576,60C672,70,768,70,864,60C960,50,1056,30,1152,20C1248,10,1344,20,1392,25L1440,30L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path></svg>');
+            background-size: cover;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-item i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .policy-section {
+                padding: 15px;
+            }
+
+            .lang-btn {
+                padding: 8px 15px;
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                flex-direction: column;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .language-toggle {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .lang-btn {
+                width: 80%;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Animation for language switch */
+        .fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+    </style>
+</head>
+<body>
+<!-- Header Section -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-dumbbell"></i>
+            <h1>أكاديمية هوبس للاطفال</h1>
+        </div>
+        <h2>الشروط والأحكام وسياسة الخصوصية</h2>
+
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="ar">العربية</button>
+            <button class="lang-btn" data-lang="en">English</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Arabic Content -->
+    <section id="arabic-content" class="content-section active" dir="rtl">
+        <h2 class="section-title"><i class="fas fa-file-contract"></i> الشروط والأحكام العامة</h2>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-users"></i> الاشتراك والعضوية</h3>
+            <ul>
+                <li>يحق للأعضاء المحتملين اختيار خطة برنامج العضوية التي يفضلونها، مع مراعاة أن بعض العضويات قد لا تكون مناسبة للعضو بناءً على تقييم المدرب</li>
+                <li>قد تعيد الأكاديمية جدولة مواعيد الحصص لضمان حصول كل عضو على الاهتمام والرعاية المناسبين. سيتم إخطار العضو عبر الهاتف، الرسائل النصية، البريد الإلكتروني، أو إشعارات الفصل</li>
+                <li>تحدد الأكاديمية جدول الإجازات سنوياً، ويتم نشره على حسابات التواصل الاجتماعي و/أو إرساله عبر البريد الإلكتروني و/أو الرسائل النصية وفقاً لتفاصيل الاتصال المقدمة أثناء التسجيل</li>
+                <li>يمكن حجز مكان في الحصة فقط خلال فترة تسجيل العضو، مع الالتزام ببند (الغياب/تجميد الجلسات)</li>
+                <li>لضمان جودة التدريب، تقتصر كل جلسة على عدد معين من الأعضاء</li>
+                <li>يتم إرسال جدول زمني لكل عضو قبل بدء خطة برنامج العضوية</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-money-bill-wave"></i> الرسوم وسياسة الدفع</h3>
+            <ul>
+                <li>يتم التخطيط لحصص هوبس على أساس خطة برنامج العضوية المصممة حسب التوصية من مدرب هوبس</li>
+                <li>بناءً على خطة برنامج العضوية المحددة، يجب سداد المبلغ بالكامل مقدماً لتأكيد عملية التسجيل</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-calendar-times"></i> الغياب / تجميد الجلسات</h3>
+            <ul>
+                <li>تسمح العضوية المرنة بتجميد العضوية لما يصل إلى جلستين دون رسوم إضافية، شريطة أن يكون الاشتراك لمدة ثلاثة أشهر على الأقل، وأن يتم الإبلاغ عن التجميد قبل يومين على الأقل عبر البريد الإلكتروني لإدارة الأكاديمية</li>
+                <li>لا ينطبق حق التجميد على العضويات غير المرنة</li>
+                <li>لا تسمح العضويات غير المرنة للأعضاء بتعويض الحصص الغائبة</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <div class="highlight-title"><i class="fas fa-exclamation-circle"></i> سياسة الاسترجاع</div>
+            <ul>
+                <li>لا يتم استرداد أي مدفوعات في حالة إلغاء العضوية، إلا إذا كان الإلغاء من قبل الأكاديمية أو بسبب تعليمات حكومية</li>
+                <li>في حالات خاصة (مثل الإصابات أو العمليات الجراحية)، قد يتم استرداد المبلغ وفقاً لتقدير إدارة الأكاديمية</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-user-shield"></i> السلوك والإجراءات</h3>
+            <ul>
+                <li>يجب على الأعضاء والزوار الالتزام بقواعد الأكاديمية، بما في ذلك السياسات المنشورة أو المرسلة عبر البريد الإلكتروني أو الرسائل النصية</li>
+                <li>تحتفظ الأكاديمية بالحق في رفض الدخول أو إنهاء العضوية دون استرداد المبلغ في حالة السلوك غير المناسب</li>
+                <li>يظل الأطفال غير المشاركين في الحصص تحت إشراف شخص بالغ في جميع الأوقات</li>
+                <li>يُمنع التقاط صور أو مقاطع فيديو لأعضاء آخرين دون موافقة</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 40px;"><i class="fas fa-camera"></i> موافقة أولياء الأمور على الصور والفيديوهات للأطفال</h2>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-check-circle"></i> اشتراط الموافقة</h3>
+            <ul>
+                <li>يحق للأكاديمية التقاط صور/فيديوهات للأطفال خلال الحصص أو الفعاليات بعد الحصول على موافقة خطية من ولي الأمر عبر استمارة التسجيل أو نموذج موافقة منفصل</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-bullseye"></i> أغراض الاستخدام</h3>
+            <ul class="check-list">
+                <li>التغذية الراجعة التدريبية (مشاركتها مع أولياء الأمور بشكل خاص)</li>
+                <li>التسويق للأكاديمية (الموقع/منصات التواصل الاجتماعي)</li>
+                <li>الأغراض التعليمية/الترويجية</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-user-check"></i> حقوق أولياء الأمور</h3>
+            <ul class="check-list">
+                <li>سحب الموافقة متى يرغب بإخطار الإدارة كتابياً</li>
+                <li>طلب حذف الصور/الفيديوهات الموجودة (إلا إذا تم استخدامها في مواد منشورة)</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-shield-alt"></i> إجراءات الحماية</h3>
+            <ul>
+                <li>لن يتم نشر معلومات تعريفية (مثل الاسم الكامل أو العنوان) مع الصور/الفيديوهات</li>
+                <li>لا تُشارك المواد مع أطراف ثالثة دون موافقة إضافية</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-ban"></i> الانسحاب</h3>
+            <ul>
+                <li>الأطفال الذين يرفض أولياؤهم الموافقة لن يظهروا في أي مواد وسائط مع الاحتفاظ بكامل حقوقهم في المشاركة بالحصص</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-sync-alt"></i> التغييرات على السياسة</h3>
+            <ul>
+                <li>تحتفظ الأكاديمية بالحق في تحديث السياسات والشروط في أي وقت، مع إخطار الأعضاء بالتغييرات</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- English Content -->
+    <section id="english-content" class="content-section" dir="ltr">
+        <h2 class="section-title"><i class="fas fa-file-contract"></i> General Terms and Conditions</h2>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-users"></i> Membership</h3>
+            <ul>
+                <li>Potential members may choose their preferred membership plan, though some plans may not be advised based on the coach's assessment</li>
+                <li>The Academy may reschedule classes to ensure proper attention. Members will be notified via phone, email, text, or in-class notices</li>
+                <li>Holiday schedules are published annually on social media or shared via email/text</li>
+                <li>Class spots are held only for the enrolment period. Members must comply with the "Absence/Freeze" policy</li>
+                <li>Sessions are limited to a set number of members to maintain quality</li>
+                <li>A schedule will be shared with each member before their plan begins</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-money-bill-wave"></i> Payments Policy</h3>
+            <ul>
+                <li>Classes are planned based on the membership program recommended by the coach</li>
+                <li>Full payment is required upfront to confirm registration</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-calendar-times"></i> Absence/Freeze of Sessions</h3>
+            <ul>
+                <li>Flexible Membership: Members may freeze up to 2 sessions (no fee) if the subscription is a 3-month active membership and freeze requests are emailed to management at least 2 days in advance</li>
+                <li>Inflexible Membership: No make-up sessions allowed for missed classes</li>
+            </ul>
+        </div>
+
+        <div class="highlight">
+            <div class="highlight-title"><i class="fas fa-exclamation-circle"></i> Refund Policy</div>
+            <ul>
+                <li>No refunds unless cancellation is initiated by the Academy or due to government instructions</li>
+                <li>Exceptions (e.g., injuries/surgeries) are at management's discretion</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-user-shield"></i> Behaviours & Procedures</h3>
+            <ul>
+                <li>Members/guests must follow Academy rules (posted onsite or shared via email/text)</li>
+                <li>The Academy may refuse entry or terminate membership (no refund) for disruptive behaviour</li>
+                <li>Children not in class must be supervised by an adult</li>
+                <li>Media Policy: No photos/videos of other members without Academy approval</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 40px;"><i class="fas fa-camera"></i> Media Consent for Minors</h2>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-check-circle"></i> Consent Requirement</h3>
+            <ul>
+                <li>The Academy may capture photos/videos of children during classes/events only after obtaining written consent from a parent/guardian via the official registration form or a separate consent form</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-bullseye"></i> Usage Purposes</h3>
+            <ul class="check-list">
+                <li>Training feedback (shared privately with parents)</li>
+                <li>Academy marketing (website/social media)</li>
+                <li>Educational/promotional materials</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-user-check"></i> Parental Rights</h3>
+            <ul class="check-list">
+                <li>Withdraw consent anytime by notifying management in writing</li>
+                <li>Request deletion of existing media (unless used in published materials)</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-shield-alt"></i> Safety Measures</h3>
+            <ul>
+                <li>No identifying information (e.g., full names, addresses) will be published with media</li>
+                <li>Media will never be shared with third parties without additional consent</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-ban"></i> Opt-Out</h3>
+            <ul>
+                <li>Children of parents who decline consent will not be featured in media and can still participate fully in classes</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h3 class="policy-title"><i class="fas fa-sync-alt"></i> Policy Changes</h3>
+            <ul>
+                <li>The Academy may update policies at any time. Current members will be notified of changes</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <h3>اتصل بنا</h3>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+966 553327877</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>Hops@hopsgym.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>القصيم، المملكة العربية السعودية</span>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 أكاديمية هوبس للرياضة. جميع الحقوق محفوظة.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Language toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const arabicContent = document.getElementById('arabic-content');
+        const englishContent = document.getElementById('english-content');
+
+        // Function to switch language
+        function switchLanguage(lang) {
+            // Update active button
+            langButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Update content visibility with animation
+            if (lang === 'ar') {
+                englishContent.classList.remove('active');
+                setTimeout(() => {
+                    arabicContent.classList.add('active');
+                }, 300);
+            } else {
+                arabicContent.classList.remove('active');
+                setTimeout(() => {
+                    englishContent.classList.add('active');
+                }, 300);
+            }
+
+            // Update page direction
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+        }
+
+        // Add click event listeners
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                switchLanguage(lang);
+
+                // Store language preference
+                localStorage.setItem('preferredLanguage', lang);
+            });
+        });
+
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && savedLang !== 'ar') {
+            switchLanguage(savedLang);
+        }
+    });
+</script>
+</body>
+</html>
